@@ -50,11 +50,11 @@ extract_first()：这个方法返回的是一个string字符串，是list数组�
                 meta={"item": deepcopy(item)}
             )
         # 列表页翻页
-        next_url = response.xapth("//span/a[@class='p-next']/@href").extract_first()  # 不完整
+        next_url = response.xpath("//span/a[@class='p-next']/@href").extract_first()  # 不完整
         if next_url is not None:
             yield scrapy.Request(
                 'https:' + next_url,
-                callback=self.parse_book_list(),
+                callback=self.parse_book_list,
                 meta={"item": deepcopy(item)}
             )
 
